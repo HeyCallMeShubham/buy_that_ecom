@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+:root {
+
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+
+  font-size: 1.6rem;
+  margin: 0%;
+  padding: 0%;
+  padding-top: 7rem;
+  box-sizing: border-box;
+
+}
+
+
+.icon {
+
+  margin: 0;
+  padding: 0;
+
+}
+
+
+::-webkit-scrollbar {
+
+  display: none;
+
+}
+
+ 
