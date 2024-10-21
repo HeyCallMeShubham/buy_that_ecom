@@ -11,6 +11,9 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import Navbar from "./Navbar";
 
 
+import { IoLocationOutline } from "react-icons/io5";
+import AddressPopupModal from "./modals/AddressPopupModal";
+
 const Header = () => {
 
 
@@ -40,6 +43,41 @@ const Header = () => {
 
         </span>
 
+
+
+
+
+
+        <div className='option onhovercursorpointer borderwhenhovered address-container'> {/*address-container start*/}
+
+
+          <span className="icon">
+
+            <IoLocationOutline />
+
+          </span>
+
+
+
+          <div className="address-info">
+
+            <span className='deliverToUserName firstletterofTocapitalize' >deliver to {"shubham"}</span>
+
+            <span className='deliverToCityAndPincode firstletterofTocapitalize' >{"Chandigarh"}  {"160044"}</span>
+
+          </div>
+
+
+
+        </div>{/*address-container end*/}
+
+
+
+
+
+
+
+
         <form className='searchInputForm'>
 
           <input type='text' className='search-input removeborder' placeholder='search product phone book' />
@@ -56,19 +94,17 @@ const Header = () => {
 
 
 
-        <div className="option onhovercursorpointer borderwhenhovered languagecontainer ">
+        <div className="option onhovercursorpointer borderwhenhovered languagecontainer "> {/*language-container-start*/}
 
           <div className="selected-language-container">
 
-            <span className="">
+            <span className="icon">
               <In />
             </span>
 
-
             <p>EN</p>
 
-
-            <span className="">
+            <span className="icon">
               <IoMdArrowDropdown />
             </span>
 
@@ -101,6 +137,8 @@ const Header = () => {
 
 
 
+
+
               <div className="other-languages-list-container label-container"> {/*other-languages-container*/}
 
                 <label htmlFor="language" className="a-label">
@@ -119,15 +157,126 @@ const Header = () => {
 
               </div> {/*other-languages-container*/}
 
+
+
+
+              <div className="other-languages-list-container label-container"> {/*other-languages-container*/}
+
+                <label htmlFor="language" className="a-label">
+
+                  <input type="radio" id="language" />
+
+                  <span className="language-name-in-regional">
+
+                    {"हिन्दी"}
+                    {"-"}
+                    {"HI"}
+
+                  </span>
+
+                </label>
+
+              </div> {/*other-languages-container*/}
+
+
+
+
+
+              <div className="other-languages-list-container label-container"> {/*other-languages-container*/}
+
+                <label htmlFor="language" className="a-label">
+
+                  <input type="radio" id="language" />
+
+                  <span className="language-name-in-regional">
+
+                    {"हिन्दी"}
+                    {"-"}
+                    {"HI"}
+
+                  </span>
+
+                </label>
+
+              </div> {/*other-languages-container*/}
+
+
+
+
+
+              <div className="other-languages-list-container label-container"> {/*other-languages-container*/}
+
+                <label htmlFor="language" className="a-label">
+
+                  <input type="radio" id="language" />
+
+                  <span className="language-name-in-regional">
+
+                    {"हिन्दी"}
+                    {"-"}
+                    {"HI"}
+
+                  </span>
+
+                </label>
+
+              </div> {/*other-languages-container*/}
+
+
+
+
+
+              <div className="other-languages-list-container label-container"> {/*other-languages-container*/}
+
+                <label htmlFor="language" className="a-label">
+
+                  <input type="radio" id="language" />
+
+                  <span className="language-name-in-regional">
+
+                    {"हिन्दी"}
+                    {"-"}
+                    {"HI"}
+
+                  </span>
+
+                </label>
+
+              </div> {/*other-languages-container*/}
+
+
+
+
+
+              <div className="other-languages-list-container label-container"> {/*other-languages-container*/}
+
+                <label htmlFor="language" className="a-label">
+
+                  <input type="radio" id="language" />
+
+                  <span className="language-name-in-regional">
+
+                    {"हिन्दी"}
+                    {"-"}
+                    {"HI"}
+
+                  </span>
+
+                </label>
+
+              </div> {/*other-languages-container*/}
+
+
+
+
+
             </form>
 
           </div>
 
 
 
-
-
-        </div>
+        </div> {/*language-container-end*/}
 
 
 
@@ -139,7 +288,7 @@ const Header = () => {
 
 
 
-        <div className='option onhovercursorpointer borderwhenhovered'>
+        <div className='option onhovercursorpointer borderwhenhovered useraccount-container'> {/*useraccounnt-container start*/}
 
           <span className='accountofname onhovercursorpointer ' >Hello, <span className='firstletterofTocapitalize'>gautam</span></span>
 
@@ -149,7 +298,30 @@ const Header = () => {
 
           </span>
 
-        </div>
+
+
+
+
+          <div className="account-related-options-container displayonhover">
+
+            <h3 className="firstletterofTocapitalize">your account</h3>
+
+            <ul>
+
+              <li className="firstletterofTocapitalize">Hello</li>
+              <li className="firstletterofTocapitalize">switch account</li>
+              <li className="firstletterofTocapitalize">switch account</li>
+              <li className="firstletterofTocapitalize">switch account</li>
+              <li className="firstletterofTocapitalize">switch account</li>
+              <li className="firstletterofTocapitalize">switch account</li>
+              <li className="firstletterofTocapitalize">switch account</li>
+
+
+            </ul>
+
+          </div>
+
+        </div> {/*useraccounnt-container end*/}
 
 
 
@@ -169,7 +341,7 @@ const Header = () => {
 
       <Navbar />
 
-
+{true ? <AddressPopupModal /> : ""}
 
 
 
