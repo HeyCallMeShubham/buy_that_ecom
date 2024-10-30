@@ -1,9 +1,12 @@
 
 import { RxCross1 } from "react-icons/rx";
 import "../../styles/modals/addressPopupModal.css"
+import { useEffect } from "react";
 
-const AddressPopupModal = () => {
+const AddressPopupModal = ({ setIsAddressModalOpen, isAddressModalOpen }: any) => {
 
+   
+ 
 
     return (
 
@@ -18,7 +21,7 @@ const AddressPopupModal = () => {
                     <h3 className="">Choose your location</h3>
 
                     <span className="icon crossicon onhovercursorpointer">
-                        <RxCross1 />
+                        <RxCross1 onClick={() => setIsAddressModalOpen((prev: boolean) => !prev)} />
                     </span>
 
                 </div>

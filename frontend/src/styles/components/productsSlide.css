@@ -1,0 +1,280 @@
+.products-slide {
+
+    background-color: rgb(228, 228, 228);
+
+   border-radius: 1rem;
+
+    width: 100%;
+
+    height: 38rem;
+
+    align-items: center;
+
+    text-align: center;
+
+    display: flex;
+
+    overflow-y: scroll;
+
+    padding: 2rem 1rem 2rem 1rem;
+
+    column-gap: 6px;
+
+}
+
+.products-slide .striked-price {
+
+    text-decoration: line-through;
+
+}
+
+
+
+
+
+
+
+
+.products-slide .product-container {
+
+    background-color: rgb(255, 255, 255);
+
+    border: solid 1px rgb(0, 0, 0);
+
+    min-width: 25rem;
+    max-width: 25rem;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 0.4rem;
+
+
+}
+
+
+
+
+.products-slide .product-container .product-image-container {
+
+
+    align-items: center;
+
+    text-align: center;
+
+    width: 100%;
+
+    height: 25rem;
+
+    display: flex;
+
+}
+
+
+
+
+
+.products-slide .product-container .product-image-container .product-image {
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+
+.products-slide .product-container .product-info-container {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    text-align: left;
+
+    align-items: start;
+
+ 
+
+    width: 100%;
+
+    height: 24rem;
+
+    row-gap: 2px;
+
+}
+
+
+
+.products-slide .product-container .product-info-container div[must-have="gap"] {
+
+    display: flex;
+
+    gap: 4px;
+
+
+}
+
+
+
+.products-slide .product-container .product-info-container .percent-off-container {
+
+    width: 100%;
+
+    display: flex;
+
+    text-align: center;
+
+    align-items: center;
+
+
+
+}
+
+
+
+
+.products-slide .product-container .product-info-container .percent-off-container .percent-off {
+
+    background-color: red;
+
+    color: white;
+
+    font-size: small;
+
+    width: 5.5rem;
+
+    height: 2.2rem;
+
+    display: flex;
+
+    text-align: center;
+
+    align-items: center;
+
+    justify-content: center;
+
+
+}
+
+
+
+
+.products-slide .product-container .product-info-container .percent-off-container .special-occasion-tag {
+
+    color: green;
+
+    display: flex;
+
+    text-align: center;
+
+    align-items: center;
+
+    justify-content: center;
+
+
+}
+
+
+
+
+
+
+.products-slide .product-container .product-info-container .price-container {
+
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    text-align: center;
+
+
+}
+
+
+
+
+
+.products-slide .product-container .product-info-container .price-container .mrp-title {
+
+    color: rgb(128, 128, 128);
+
+    font-size: 0.9rem;
+
+}
+
+
+
+
+
+.products-slide .product-container .product-info-container .price-container .striked-price {
+
+
+    color: rgb(128, 128, 128);
+
+    font-size: 1.2rem;
+
+
+}
+
+
+
+.products-slide .product-container .product-info-container .product-title-desc-container {
+
+ 
+
+    width: 100%;
+ 
+    height: 2rem;
+    
+    overflow-y: hidden;
+    
+    display: flex;
+    
+    
+    
+}
+
+
+.products-slide .product-container .product-info-container .product-title-desc-container p{ 
+    
+    width: 100%;
+    
+    height: 100%;
+    
+    height: 2rem;
+
+    overflow-y: hidden;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

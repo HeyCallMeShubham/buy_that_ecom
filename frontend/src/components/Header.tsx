@@ -1,3 +1,6 @@
+
+import react from "react"
+
 import "../styles/components/headerAndNavbar.css";
 
 import { In } from "react-flags-select";
@@ -10,11 +13,20 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 
 import Navbar from "./Navbar";
 
-
 import { IoLocationOutline } from "react-icons/io5";
+
 import AddressPopupModal from "./modals/AddressPopupModal";
 
+import { useState } from "react";
+
+import { Outlet } from "react-router-dom";
+
+
 const Header = () => {
+
+
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+
 
 
   window.addEventListener("scroll", () => {
@@ -48,7 +60,7 @@ const Header = () => {
 
 
 
-        <div className='option onhovercursorpointer borderwhenhovered address-container'> {/*address-container start*/}
+        <div className='option onhovercursorpointer borderwhenhovered address-container' onClick={() => setIsAddressModalOpen(prev => !prev)}> {/*address-container start*/}
 
 
           <span className="icon">
@@ -121,7 +133,7 @@ const Header = () => {
 
                 <label htmlFor="language" className="a-label">
 
-                  <input type="radio" id="language" />
+                  <input type="radio" className="onhovercursorpointer" id="language" />
 
                   <span className="language-name-in-regional">
 
@@ -143,28 +155,7 @@ const Header = () => {
 
                 <label htmlFor="language" className="a-label">
 
-                  <input type="radio" id="language" />
-
-                  <span className="language-name-in-regional">
-
-                    {"हिन्दी"}
-                    {"-"}
-                    {"HI"}
-
-                  </span>
-
-                </label>
-
-              </div> {/*other-languages-container*/}
-
-
-
-
-              <div className="other-languages-list-container label-container"> {/*other-languages-container*/}
-
-                <label htmlFor="language" className="a-label">
-
-                  <input type="radio" id="language" />
+                  <input type="radio" className="onhovercursorpointer" id="language" />
 
                   <span className="language-name-in-regional">
 
@@ -186,73 +177,7 @@ const Header = () => {
 
                 <label htmlFor="language" className="a-label">
 
-                  <input type="radio" id="language" />
-
-                  <span className="language-name-in-regional">
-
-                    {"हिन्दी"}
-                    {"-"}
-                    {"HI"}
-
-                  </span>
-
-                </label>
-
-              </div> {/*other-languages-container*/}
-
-
-
-
-
-              <div className="other-languages-list-container label-container"> {/*other-languages-container*/}
-
-                <label htmlFor="language" className="a-label">
-
-                  <input type="radio" id="language" />
-
-                  <span className="language-name-in-regional">
-
-                    {"हिन्दी"}
-                    {"-"}
-                    {"HI"}
-
-                  </span>
-
-                </label>
-
-              </div> {/*other-languages-container*/}
-
-
-
-
-
-              <div className="other-languages-list-container label-container"> {/*other-languages-container*/}
-
-                <label htmlFor="language" className="a-label">
-
-                  <input type="radio" id="language" />
-
-                  <span className="language-name-in-regional">
-
-                    {"हिन्दी"}
-                    {"-"}
-                    {"HI"}
-
-                  </span>
-
-                </label>
-
-              </div> {/*other-languages-container*/}
-
-
-
-
-
-              <div className="other-languages-list-container label-container"> {/*other-languages-container*/}
-
-                <label htmlFor="language" className="a-label">
-
-                  <input type="radio" id="language" />
+                  <input type="radio" className="onhovercursorpointer" id="language" />
 
                   <span className="language-name-in-regional">
 
@@ -308,13 +233,20 @@ const Header = () => {
 
             <ul>
 
-              <li className="firstletterofTocapitalize">Hello</li>
-              <li className="firstletterofTocapitalize">switch account</li>
-              <li className="firstletterofTocapitalize">switch account</li>
-              <li className="firstletterofTocapitalize">switch account</li>
-              <li className="firstletterofTocapitalize">switch account</li>
-              <li className="firstletterofTocapitalize">switch account</li>
-              <li className="firstletterofTocapitalize">switch account</li>
+
+              <li className="firstletterofTocapitalize onhovercursorpointer">
+                switch accounts
+              </li>
+
+
+              <li className="firstletterofTocapitalize onhovercursorpointer">
+                your orders
+              </li>
+
+
+              <li className="firstletterofTocapitalize onhovercursorpointer">
+                your wishlist
+              </li>
 
 
             </ul>
@@ -341,11 +273,11 @@ const Header = () => {
 
       <Navbar />
 
-{true ? <AddressPopupModal /> : ""}
+      {isAddressModalOpen ? <AddressPopupModal setIsAddressModalOpen={setIsAddressModalOpen} isAddressModalOpen={isAddressModalOpen} /> : ""}
 
 
 
-
+      <Outlet />
 
 
     </div>
