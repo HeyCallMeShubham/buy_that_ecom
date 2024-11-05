@@ -20,6 +20,7 @@ const Home = () => {
 
 
   return (
+
     <div className="home-page-container">
 
       <div className='main-item-container'> {/* main-item-container start */}
@@ -40,19 +41,13 @@ const Home = () => {
         </div> {/* bg-image-container end */}
 
 
-
         <div className='products-section'> {/*products-section start*/}
-
 
           <BoxRowsContainer />
 
-
           <ProductsSlide />
+
           <ProductsSlide2 />
-
- 
-
-
 
         </div> {/*products-section end*/}
 
@@ -60,7 +55,8 @@ const Home = () => {
       </div> {/* main-item-container end*/}
 
 
-    </div >
+    </div>
+
   )
 }
 
