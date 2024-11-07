@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Errorhandler } from "../utils/ErrorHandler";
+import { db_name } from "../constants";
 
 
 
@@ -9,11 +10,8 @@ export const dbConnect = async () => {
 
         const MONGODBURL: any = process.env.MONGODBURL
 
-        console.log(MONGODBURL, 'mongodb');
+        const { connection } = await mongoose.connect(`${MONGODBURL}/${db_name}`);
 
-        const { connection } = await mongoose.connect(MONGODBURL);
-
-        
         if (connection) {
 
             console.log("connected with mongodb");
@@ -29,14 +27,13 @@ export const dbConnect = async () => {
     } catch (err: any) {
 
         console.log("db-connection-error", err);
+
         console.log("db-err-code", err.statusCode);
 
         process.exit(1);
 
     }
 
-
 }
-
 
 

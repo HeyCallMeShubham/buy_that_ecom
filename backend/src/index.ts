@@ -1,16 +1,20 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { dbConnect } from "./config/dbConnect";
+
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./middlewares/errorMiddleware";
 import { Errorhandler } from "./utils/ErrorHandler";
-import https from "https"
-import fs from "fs"
+import https from "https";
+import fs from "fs";
 import path from "path";
 
+import mongoose from "mongoose";
 
+import { dbConnect } from "./config/dbConnect";
+
+import { app } from "./app"
 
 
 
@@ -22,11 +26,16 @@ import path from "path";
 
 
 
-const app = express();
 
 
+(async () => {
 
-dbConnect();
+
+    dbConnect();
+
+})()
+
+
 
 
 
@@ -37,10 +46,6 @@ app.use(cors({
     credentials: true
 
 }));
-
-
-
-
 
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cookieParser());
@@ -63,30 +68,53 @@ app.get("/get", (req, res, next) => {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.use(errorMiddleware);
 
 
+interface IHttpsOptions {
+
+    key: Buffer,
+    cert: Buffer
+
+}
 
 
 
-const options = {
+const httpsOptions: IHttpsOptions = {
 
-    key: fs.readFileSync(path.resolve(__dirname, "../certs/cert.key")),
-    cert: fs.readFileSync(path.resolve(__dirname, "../certs/cert.crt"))
+    key: fs.readFileSync(path.join(__dirname, "../certs/cert.key")),
+    cert: fs.readFileSync(path.join(__dirname, "../certs/cert.crt")),
 
 }
 
 
 
 
-const sslServer = https.createServer(options, app);
+
+const httpsServer = https.createServer(httpsOptions, app);
 
 
+httpsServer.listen(process.env.PORT || 4431, () => {
 
-sslServer.listen(process.env.HOST, () => {
-
-    console.log(process.env.HOST);
+    console.log(`listening on port number ${process.env.PORT}`);
 
 });
+
+
+
 
 

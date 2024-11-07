@@ -4,8 +4,8 @@ declare global {
 
         interface processEnv{
 
-            MONGODBURL:string            
-            HOST:string  
+            MONGODBURL:string         
+            PORT:string  
             NODE_ENV:"development" | "production"
 
         }
