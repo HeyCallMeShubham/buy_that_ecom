@@ -29,10 +29,10 @@ cloudinary.config({
 });
 
 
-const filePathToRemoveFrom = path.join(__dirname, `../images`)
+const filePathToRemoveFrom = path.resolve(__dirname, `../images`)
 
 
-const uploadOnCloudinary = async (filePath: any, filename:string) => {
+const uploadOnCloudinary = async (filePath: any, filename:string | undefined) => {
 
     const options = {
 

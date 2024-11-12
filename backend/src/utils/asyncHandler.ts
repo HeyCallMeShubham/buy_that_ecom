@@ -10,9 +10,9 @@ const asyncHandler = (fn: Function) => async (req: Request, res: Response, next:
 
     } catch (err: any) {
 
-        console.log(err.code, 'cause');
+        console.log(err, 'cause');
 
-        res.status(err.code || 500).json({
+        res.status(err.statusCode || 500).json({
 
             success: false,
             message: err.message

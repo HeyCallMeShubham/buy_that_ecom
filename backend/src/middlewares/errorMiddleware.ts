@@ -22,9 +22,7 @@ const errorMiddleware = (err: any, req: Request, res: Response, next: NextFuncti
 
     });
 
-
-    console.log(err)
-
+    
 }
 
 

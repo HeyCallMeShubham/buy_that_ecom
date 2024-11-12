@@ -23,6 +23,7 @@ import { uploadOnCloudinary } from "./services/cloudinary";
 import multer from "multer";
 
 import { upload } from "./middlewares/multer.fileUpload.middleware";
+import { UserRouter } from "./routes/UserRoutes";
 
 
 
@@ -60,10 +61,9 @@ app.use(cors({
 
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cookieParser());
+app.use("/api/v1/user", UserRouter);
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.static("public"));
-
-
 
 
 
@@ -74,6 +74,8 @@ const images = path.resolve(__dirname, `./images`);
 const files = fs.readdirSync(images);
 
 console.log(images, 'images');
+
+
 
 
 
@@ -90,7 +92,7 @@ app.post("/upload", upload.single("profileImage"), (req: any, res: Response, nex
 
         uploadOnCloudinary(req.file.path, req.file.filename);
 
-       
+
 
         // if (true) {
 
