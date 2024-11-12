@@ -3,10 +3,9 @@ import { NextFunction, Request, Response } from "express";
 
 const errorMiddleware = (err: any, req: Request, res: Response, next: NextFunction) => {
 
-    console.log(err.statusCode, 'statu');
 
-    const status: number = err.statusCode 
-    const message: string = err.message 
+    const status: number = err.statusCode
+    const message: string = err.message
     const data: undefined | null = null
     const errors: any[] | any = err.errors
     const success: boolean = false
@@ -22,6 +21,9 @@ const errorMiddleware = (err: any, req: Request, res: Response, next: NextFuncti
         data: data,
 
     });
+
+
+    console.log(err)
 
 }
 

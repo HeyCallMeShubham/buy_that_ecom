@@ -10,7 +10,14 @@ export const dbConnect = async () => {
 
         const MONGODBURL: any = process.env.MONGODBURL
 
+        // make sure to use an previous version of mongoose to avoid
+        // any kind of error latest version can cause error 
+
         const { connection } = await mongoose.connect(`${MONGODBURL}/${db_name}`);
+
+
+        
+
 
         if (connection) {
 

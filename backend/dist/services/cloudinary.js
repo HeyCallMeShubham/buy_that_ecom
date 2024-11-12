@@ -12,27 +12,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.dbConnect = void 0;
-const mongoose_1 = __importDefault(require("mongoose"));
-const constants_1 = require("../constants");
-const dbConnect = () => __awaiter(void 0, void 0, void 0, function* () {
+exports.uploadOnCloudinary = void 0;
+const cloudinary_1 = require("cloudinary");
+const dotenv_1 = __importDefault(require("dotenv"));
+(() => __awaiter(void 0, void 0, void 0, function* () {
+    dotenv_1.default.config();
+}))();
+cloudinary_1.v2.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+    secure: true
+});
+console.log(cloudinary_1.v2.config(), 'confi');
+const uploadOnCloudinary = (filePath) => __awaiter(void 0, void 0, void 0, function* () {
+    const options = {
+        use_filename: true,
+        unique_filename: false,
+        overwrites: true
+    };
     try {
-        const MONGODBURL = process.env.MONGODBURL;
-        // make sure to use an previous version of mongoose to avoid
-        // any kind of error latest version can cause error 
-        const { connection } = yield mongoose_1.default.connect(`${MONGODBURL}/${constants_1.db_name}`);
-        if (connection) {
-            console.log("connected with mongodb");
-            return connection;
-        }
-        else {
-            console.log("couldnt connect");
-        }
+        const result = yield cloudinary_1.v2.uploader.upload(filePath, options);
+        console.log(result, 'result');
     }
     catch (err) {
-        console.log("db-connection-error", err);
-        console.log("db-err-code", err.statusCode);
-        process.exit(1);
     }
 });
-exports.dbConnect = dbConnect;
+exports.uploadOnCloudinary = uploadOnCloudinary;

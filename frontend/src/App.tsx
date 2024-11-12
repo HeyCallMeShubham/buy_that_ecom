@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
  
 import Home from './pages/Home'
+import Register from "./pages/user/Register"
 
 function App() {
 
@@ -17,6 +18,10 @@ function App() {
           <Route index path='/' element={<Home />} />
 
         </Route>
+
+
+          <Route path="/register" element={<Register />} />
+
 
       </Routes>
 
