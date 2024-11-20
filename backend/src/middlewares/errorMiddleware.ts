@@ -3,6 +3,7 @@ import { NextFunction, Request, Response } from "express";
 
 const errorMiddleware = (err: any, req: Request, res: Response, next: NextFunction) => {
 
+    console.log(err, 'error');
 
     const status: number = err.statusCode
     const message: string = err.message
@@ -22,7 +23,7 @@ const errorMiddleware = (err: any, req: Request, res: Response, next: NextFuncti
 
     });
 
-    
+
 }
 
 

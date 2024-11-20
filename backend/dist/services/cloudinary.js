@@ -15,6 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.uploadOnCloudinary = void 0;
 const cloudinary_1 = require("cloudinary");
 const dotenv_1 = __importDefault(require("dotenv"));
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
 (() => __awaiter(void 0, void 0, void 0, function* () {
     dotenv_1.default.config();
 }))();
@@ -24,8 +26,8 @@ cloudinary_1.v2.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
     secure: true
 });
-console.log(cloudinary_1.v2.config(), 'confi');
-const uploadOnCloudinary = (filePath) => __awaiter(void 0, void 0, void 0, function* () {
+const filePathToRemoveFrom = path_1.default.resolve(__dirname, `../images`);
+const uploadOnCloudinary = (filePath, filename) => __awaiter(void 0, void 0, void 0, function* () {
     const options = {
         use_filename: true,
         unique_filename: false,
@@ -33,9 +35,10 @@ const uploadOnCloudinary = (filePath) => __awaiter(void 0, void 0, void 0, funct
     };
     try {
         const result = yield cloudinary_1.v2.uploader.upload(filePath, options);
-        console.log(result, 'result');
+        return result;
     }
     catch (err) {
+        fs_1.default.unlinkSync(`${filePathToRemoveFrom}/${filename}`);
     }
 });
 exports.uploadOnCloudinary = uploadOnCloudinary;

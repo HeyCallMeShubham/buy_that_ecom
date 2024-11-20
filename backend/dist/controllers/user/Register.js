@@ -16,33 +16,49 @@ exports.RegisterUser = void 0;
 const UserModel_1 = require("../../models/userModel.ts/UserModel");
 const asyncHandler_1 = require("../../utils/asyncHandler");
 const ErrorHandler_1 = require("../../utils/ErrorHandler");
-const bcryptjs_1 = __importDefault(require("bcryptjs"));
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
+const cloudinary_1 = require("../../services/cloudinary");
 const RegisterUser = (0, asyncHandler_1.asyncHandler)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a, _b, _c, _d, _e;
     const { firstName, lastName, userName, email, phoneNumber, password, city, state, country } = req.body;
+    console.log(req.body, 'req.body');
+    console.log(req.file, 'req.file');
+    const filePathToRemoveFrom = path_1.default.resolve(__dirname, "../../images");
     try {
         const isUserExist = yield UserModel_1.userModel.findOne({ email: email });
         // status code 409 is appropriate status code 
         // for existing resources
-        if (isUserExist)
-            return next(new ErrorHandler_1.Errorhandler(409, "User With This Email Already Exist"));
-        const numberOfSaltForHashingPassword = 12;
-        const hashedPassword = bcryptjs_1.default.hashSync(password, numberOfSaltForHashingPassword);
+        if (isUserExist) {
+            fs_1.default.unlinkSync(`${filePathToRemoveFrom}/${(_a = req.file) === null || _a === void 0 ? void 0 : _a.filename}`);
+            throw new ErrorHandler_1.Errorhandler(409, "User With This Email Already Exist");
+        }
+        ;
         const user = new UserModel_1.userModel({
             firstName,
             lastName,
             userName,
             email,
             phoneNumber,
-            password: hashedPassword,
+            password,
             city,
             state,
             country
         });
         if (user) {
-            const profileImage = "";
+            const profileImage = yield (0, cloudinary_1.uploadOnCloudinary)((_b = req.file) === null || _b === void 0 ? void 0 : _b.path, (_c = req.file) === null || _c === void 0 ? void 0 : _c.filename);
+            user.profileImage = profileImage.url;
+            const createdUser = yield user.save();
+            if (createdUser) {
+                fs_1.default.unlinkSync(`${filePathToRemoveFrom}/${(_d = req.file) === null || _d === void 0 ? void 0 : _d.filename}`);
+                console.log("user creeated succesfulyy");
+                res.status(201).json("user created successfully");
+            }
         }
     }
     catch (err) {
+        fs_1.default.unlinkSync(`${filePathToRemoveFrom}/${(_e = req.file) === null || _e === void 0 ? void 0 : _e.filename}`);
+        throw new ErrorHandler_1.Errorhandler(err.statusCode, err.message);
     }
 }));
 exports.RegisterUser = RegisterUser;

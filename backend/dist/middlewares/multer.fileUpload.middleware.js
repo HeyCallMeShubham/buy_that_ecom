@@ -9,7 +9,7 @@ const multer_1 = __importDefault(require("multer"));
 const storage = multer_1.default.diskStorage({
     destination: (req, file, callback) => {
         try {
-            console.log(file, 'file');
+            console.log(file, 'file1');
             return callback(null, path_1.default.resolve(__dirname, "../images"));
         }
         catch (err) {

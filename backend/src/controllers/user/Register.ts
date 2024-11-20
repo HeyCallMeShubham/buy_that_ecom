@@ -36,22 +36,18 @@ const RegisterUser = asyncHandler(async (req: Request, res: Response, next: Next
             
         };
         
+
         
-        const numberOfSaltForHashingPassword: number = 12
-        
-        
-        const hashedPassword: string = bcrypt.hashSync(password, numberOfSaltForHashingPassword);
-        
+ 
         
         const user = new userModel({
-            
             
             firstName,
             lastName,
             userName,
             email,
             phoneNumber,
-            password: hashedPassword,
+            password,
             city,
             state,
             country
@@ -60,27 +56,25 @@ const RegisterUser = asyncHandler(async (req: Request, res: Response, next: Next
         
         if (user) {
             
-            const profileImage:any = await uploadOnCloudinary(req.file?.path, req.file?.filename)
-            
-            user.profileImage = profileImage.url
+            const profileImage:any = await uploadOnCloudinary(req.file?.path, req.file?.filename);
+
+            user.profileImage = profileImage.url;
             
             const createdUser = await user.save();
-            
-            
+
+
             
             if(createdUser){
                 
                 fs.unlinkSync(`${filePathToRemoveFrom}/${req.file?.filename}`);
        
-                res.status(201).json("user created successfully")
-                
+                console.log("user creeated succesfulyy")
+
+                res.status(201).json("user created successfully");     
                 
             }
             
-            
         }  
-        
-
 
     } catch (err: any) {
 

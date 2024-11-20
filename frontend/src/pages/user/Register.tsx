@@ -46,7 +46,7 @@ const Register = () => {
 
         e.preventDefault();
 
-
+        
 
         try {
 
