@@ -14,8 +14,6 @@ const Home = () => {
 
     "https://images-eu.ssl-images-amazon.com/images/G/31/img22/pcacc/jup24/3b/Starting3000x1200._CB543528423_.jpg",
 
-
-
   ]
 
 

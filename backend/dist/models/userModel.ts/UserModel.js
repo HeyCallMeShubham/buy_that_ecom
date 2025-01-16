@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -6,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userModel = void 0;
 const mongoose_1 = require("mongoose");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var planStatus;
 (function (planStatus) {
     planStatus["NONE"] = "NONE";
@@ -24,15 +34,38 @@ const userSchema = new mongoose_1.Schema({
     city: { type: String, required: true },
     state: { type: String, required: true },
     country: { type: String, required: true },
-    addresses: [{ type: String, default: 'add address' }]
+    addressess: [{ type: String, default: 'add address' }]
 });
+userSchema.methods.generateRefreshToken = function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        const JWT_REFRESH_TOKEN_SECRETKEY = process.env.JWT_REFRESH_TOKEN_SECREKEY;
+        const refreshToken = yield jsonwebtoken_1.default.sign({ id: this._id, email: this.email, number: this.number }, JWT_REFRESH_TOKEN_SECRETKEY, { expiresIn: process.env.JWT_REFRESH_TOKEN_EXPIRY });
+        return refreshToken;
+    });
+};
+userSchema.methods.generateAccessToken = function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        const JWT_ACCESS_TOKEN_SECRETKEY = process.env.JWT_ACCESS_TOKEN_SECRETKEY;
+        const accessToken = yield jsonwebtoken_1.default.sign({ id: this._id, email: this.email, number: this.number }, JWT_ACCESS_TOKEN_SECRETKEY, { expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRY });
+        return accessToken;
+    });
+};
+userSchema.methods.generateSalt = function (saltRounds) {
+    const salt = bcryptjs_1.default.genSaltSync(saltRounds);
+    return salt;
+};
+userSchema.methods.hashThePassword = function (password) {
+    const salt = this.generateSalt(12);
+    return bcryptjs_1.default.hashSync(this.password, salt);
+};
 userSchema.methods.isPasswordCorrect = function (password) {
-    return bcryptjs_1.default.compareSync(password, this.password);
+    const isPasswordCorrect = bcryptjs_1.default.compareSync(password, this.password);
+    return isPasswordCorrect;
 };
 userSchema.pre("save", function (next) {
-    console.log("hashpassowrd");
-    const numberOfSaltForHashingPassword = 12;
-    const hashedPassword = bcryptjs_1.default.hashSync(this.password, numberOfSaltForHashingPassword);
+    const user = this;
+    const userPassword = user.password;
+    const hashedPassword = user.hashThePassword(userPassword);
     this.password = hashedPassword;
     next();
 });

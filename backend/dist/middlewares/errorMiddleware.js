@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.errorMiddleware = void 0;
 const errorMiddleware = (err, req, res, next) => {
+    console.log(err, 'error');
     const status = err.statusCode;
     const message = err.message;
     const data = null;

@@ -19,8 +19,9 @@ const ErrorHandler_1 = require("../../utils/ErrorHandler");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const cloudinary_1 = require("../../services/cloudinary");
+const apiResponse_1 = require("../../utils/apiResponse");
 const RegisterUser = (0, asyncHandler_1.asyncHandler)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d;
     const { firstName, lastName, userName, email, phoneNumber, password, city, state, country } = req.body;
     console.log(req.body, 'req.body');
     console.log(req.file, 'req.file');
@@ -51,13 +52,12 @@ const RegisterUser = (0, asyncHandler_1.asyncHandler)((req, res, next) => __awai
             const createdUser = yield user.save();
             if (createdUser) {
                 fs_1.default.unlinkSync(`${filePathToRemoveFrom}/${(_d = req.file) === null || _d === void 0 ? void 0 : _d.filename}`);
-                console.log("user creeated succesfulyy");
-                res.status(201).json("user created successfully");
+                res.status(201).json(new apiResponse_1.ApiResponse(201, {}, "User Has Been Registerd Sucessfully "));
             }
         }
     }
     catch (err) {
-        fs_1.default.unlinkSync(`${filePathToRemoveFrom}/${(_e = req.file) === null || _e === void 0 ? void 0 : _e.filename}`);
+        //fs.unlinkSync(`${filePathToRemoveFrom}/${req.file?.filename}`);
         throw new ErrorHandler_1.Errorhandler(err.statusCode, err.message);
     }
 }));

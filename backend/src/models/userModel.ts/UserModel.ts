@@ -1,7 +1,12 @@
 
 import { InferSchemaType, Model, Schema, model } from "mongoose";
+
 import bcrypt from "bcryptjs";
+
 import { NextFunction } from "express";
+
+import jwt from "jsonwebtoken";
+
 
 
 
@@ -30,7 +35,7 @@ interface IUser {
     city: string
     state: string
     country: string
-    addresses: any[]
+    addressess: any[]
 
 }
 
@@ -46,6 +51,10 @@ interface InstanceMethods {
 
     hashThePassword: (saltRounds: number) => string;
 
+    generateAccessToken: (saltRounds: number) => string;
+
+    generateRefreshToken: (saltRounds: number) => string;
+
 }
 
 
@@ -59,6 +68,10 @@ interface IModel extends Model<IUser, InstanceMethods> {
     generateSalt: (saltRounds: number) => string;
 
     hashThePassword: (password: string) => string;
+
+    generateAccessToken: () => string;
+
+    generateRefreshToken: () => string;
 
 }
 
@@ -91,10 +104,41 @@ const userSchema = new Schema<IUser, InstanceMethods>({
 
     country: { type: String, required: true },
 
-    addresses: [{ type: String, default: 'add address' }]
+    addressess: [{ type: String, default: 'add address' }]
 
 
 });
+
+
+
+
+userSchema.methods.generateRefreshToken = async function () {
+
+    const JWT_REFRESH_TOKEN_SECRETKEY: string | undefined = process.env.JWT_REFRESH_TOKEN_SECREKEY
+
+    const refreshToken = await jwt.sign({ id: this._id, email: this.email, number: this.number }, JWT_REFRESH_TOKEN_SECRETKEY as string, { expiresIn: process.env.JWT_REFRESH_TOKEN_EXPIRY });
+
+    return refreshToken;
+
+};
+
+
+
+
+
+
+
+userSchema.methods.generateAccessToken = async function () {
+
+    const JWT_ACCESS_TOKEN_SECRETKEY: string | undefined = process.env.JWT_ACCESS_TOKEN_SECRETKEY 
+
+    const accessToken = await jwt.sign({ id: this._id, email: this.email, number: this.number },JWT_ACCESS_TOKEN_SECRETKEY as string, { expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRY });
+
+    return accessToken
+
+};
+
+
 
 
 
@@ -123,18 +167,12 @@ userSchema.methods.hashThePassword = function (password: string) {
 
 
 userSchema.methods.isPasswordCorrect = function (password: string) {
- 
-   const isPasswordCorrect:boolean = bcrypt.compareSync(password, this.password); 
 
-   return isPasswordCorrect
+    const isPasswordCorrect: boolean = bcrypt.compareSync(password, this.password);
+
+    return isPasswordCorrect
 
 }
-
-
-
-
-
-
 
 
 
