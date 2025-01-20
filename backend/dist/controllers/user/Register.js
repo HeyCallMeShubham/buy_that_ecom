@@ -23,8 +23,8 @@ const apiResponse_1 = require("../../utils/apiResponse");
 const RegisterUser = (0, asyncHandler_1.asyncHandler)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c, _d;
     const { firstName, lastName, userName, email, phoneNumber, password, city, state, country } = req.body;
-    console.log(req.body, 'req.body');
     console.log(req.file, 'req.file');
+    console.log(req.body, 'req.body');
     const filePathToRemoveFrom = path_1.default.resolve(__dirname, "../../images");
     try {
         const isUserExist = yield UserModel_1.userModel.findOne({ email: email });

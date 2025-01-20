@@ -1,14 +1,492 @@
-
 .main-container {
 
     color: black;
 
-    background-color: aquamarine;
+    background-color: white;
 
     min-height: 100vh;
+
+    aspect-ratio: 1/1;
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 12%) 1fr minmax(0, 12%);
+
+}
+
+
+.main-container>.flex-box-container {
+
+    border: solid 1px red;
+
+    display: flex;
+
+    flex-direction: row;
+
+    grid-column-start: 2;
+
+    grid-column-end: 2;
+
+
+
+
+}
+
+
+.main-container>.flex-box-container> :nth-child(1) {
+
+    border: solid 1px black;
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 5rem;
+
+    max-width: 5rem;
+
+    min-height: 2rem;
+
+    max-height: auto;
+
+}
+
+
+
+.main-container>.flex-box-container> :nth-child(1)>img {
+
+    border: solid 1px black;
+
+    width: 100%;
 
     aspect-ratio: 1/1;
 
 }
 
 
+
+.main-container>.flex-box-container> :nth-child(2) {
+
+    border: solid 1px black;
+
+    min-width: 65rem;
+    max-width: 65rem;
+
+    min-height: 60rem;
+    max-height: 80rem;
+
+}
+
+
+
+.main-container>.flex-box-container> :nth-child(2)>img {
+
+    width: 100%;
+
+    aspect-ratio: 1/1;
+
+}
+
+
+.main-container>.flex-box-container>.product-information-box {
+
+
+
+    min-width: 35rem;
+    max-width: 50rem;
+
+    overflow-wrap: break-word;
+
+}
+
+
+.main-container>.flex-box-container>.product-information-box div {
+
+    /* this line must uncommented */
+
+    border-bottom: solid 1px black;
+
+    width: 100%;
+
+    height: auto;
+
+
+}
+
+
+.main-container>.flex-box-container>.product-information-box .basic-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-around;
+
+    row-gap: 8px;
+
+
+}
+
+
+
+.main-container>.flex-box-container>.product-information-box .basic-info .product-title {
+
+    background-color: white;
+
+    width: 100%;
+
+    min-height: 4rem;
+
+    word-wrap: break-word;
+
+    overflow-wrap: break-word;
+
+    font-weight: 100;
+
+    word-wrap: break-word;
+
+    max-height: auto;
+
+}
+
+
+.main-container>.flex-box-container>.product-information-box .basic-info .link {
+
+    background-color: white;
+
+    display: block;
+
+
+}
+
+
+.main-container>.flex-box-container>.product-information-box .basic-info .customers-purchase-record {
+
+    background-color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: left;
+
+    text-align: left;
+
+
+
+}
+
+
+
+.main-container>.flex-box-container>.product-information-box .pricing-details {
+
+    background-color: white;
+
+    display: flex;
+
+    flex-direction: column;
+ 
+    justify-content:space-around;
+
+    align-items: left;
+
+    row-gap: 0.30rem;
+
+    min-height: 12rem;
+
+}
+
+
+
+
+.main-container>.flex-box-container>.product-information-box .pricing-details> :nth-child(1) {
+
+    display: flex;
+
+    text-align: center;
+
+    align-items: center;
+
+    column-gap: 0.80rem;
+
+    font-size: 3.8rem;
+
+    font-weight: bold;
+
+}
+
+
+
+
+.main-container>.flex-box-container>.product-information-box .pricing-details> :nth-child(1)>.percentof {
+
+    display: flex;
+
+    text-align: center;
+
+    align-items: center;
+
+    column-gap: 0.80rem;
+
+    font-size: 2.2rem;
+
+    font-weight: lighter;
+
+    color: red;
+
+}
+
+
+
+
+.main-container>.flex-box-container>.product-information-box .pricing-details> :nth-child(2) {
+
+    display: flex;
+
+    text-align: center;
+
+    align-items: center;
+
+    column-gap: 0.80rem;
+
+    font-size: 1.4rem;
+
+    font-weight: lighter;
+
+
+
+
+}
+
+
+
+.main-container>.flex-box-container>.product-information-box .pricing-details> :nth-child(3) {
+
+    font-size: 1.7rem;
+
+}
+
+
+
+
+.main-container>.flex-box-container>.product-information-box .pricing-details> :nth-child(5) {
+
+    border: solid 1px black;
+
+    font-weight:600;
+
+    align-items: center;
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: left;
+
+    text-align: center;
+
+    align-items: center;
+
+}
+
+
+
+
+
+
+
+.main-container>.flex-box-container>.product-information-box .offers-section {
+
+    background-color: rgb(31, 197, 45);
+
+    display: flex;
+
+    flex-direction: column;
+
+
+}
+
+
+
+.main-container>.flex-box-container>.product-information-box .offers-section .offers--title-text {
+
+    background-color: rgb(255, 255, 255);
+
+    font-size: large;
+
+    display: flex;
+
+    height: 3rem;
+
+    column-gap: 2rem;
+
+    align-items: center;
+
+
+
+}
+
+
+
+
+.main-container>.flex-box-container>.product-information-box .offers-section .offers-box-slider {
+
+    width: 100%;
+
+    display: flex;
+
+    overflow-x: scroll;
+
+
+
+}
+
+
+
+
+
+
+.main-container>.flex-box-container>.product-information-box .offers-section .offers-box-slider .offer-box {
+
+    background-color: rgb(255, 255, 255);
+
+    border: solid 1px black;
+
+    display: flex;
+
+    min-width: 15rem;
+    max-width: 15rem;
+
+    flex-direction: column;
+
+    justify-content: space-around;
+
+    aspect-ratio: 1/0.80;
+
+    padding: 0.70rem;
+
+}
+
+
+
+.main-container>.flex-box-container>.product-information-box .offers-section .offers-box-slider .offer-box> :nth-child(1) {
+
+    width: 100%;
+
+    font-size: 1.5rem;
+
+    align-items: end;
+
+    justify-content: center;
+
+
+}
+
+
+
+.main-container>.flex-box-container>.product-information-box .offers-section .offers-box-slider .offer-box> :nth-child(3) {
+
+    width: 100%;
+
+    font-size: 1.5rem;
+
+
+    align-items: center;
+
+    display: flex;
+
+
+
+
+
+}
+
+
+
+
+.main-container>.flex-box-container>.product-information-box .services-with-product-section {
+
+    display: flex;
+
+    overflow-x: scroll;
+
+    width: 100%;
+
+    height: 10rem;
+
+    font-size: 1.5rem;
+
+    align-items: end;
+
+
+}
+
+
+
+
+
+.main-container>.flex-box-container>.product-information-box .services-with-product-section .service {
+
+    min-width: 10rem;
+
+    max-width: 10rem;
+
+    min-height: 100%;
+
+    max-height: 100%;
+
+    align-items: center;
+
+    text-align: center;
+
+
+
+}
+
+
+
+
+
+.main-container>.flex-box-container>.product-information-box .services-with-product-section .service>.icon-image {
+
+    width: 3.5rem;
+
+    min-height: 100%;
+
+    max-height: 100%;
+
+    align-items: center;
+
+    text-align: center;
+
+
+
+}
+
+
+
+.main-container>.flex-box-container>.product-information-box .services-with-product-section .service>p {
+
+    width: 100%;
+
+    aspect-ratio: 1/1;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    align-content: center;
+
+    overflow-wrap: break-word;
+
+    font-size: 14px;
+
+
+
+}

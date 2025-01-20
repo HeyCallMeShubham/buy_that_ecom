@@ -18,7 +18,6 @@
 
 
 
-
 body {
 
   font-size: 1.6rem;
@@ -30,6 +29,28 @@ body {
 }
 
 
+.link{
+
+  color: blue;
+
+  text-decoration: none;
+
+}
+
+
+.link:hover{
+
+  color: blue;
+
+  cursor: pointer;
+
+}
+
+
+
+
+
+
 .icon {
 
   margin: 0;
@@ -38,10 +59,15 @@ body {
 }
 
 
+
 ::-webkit-scrollbar {
 
   display: none;
 
 }
 
+
+
  
+
+
