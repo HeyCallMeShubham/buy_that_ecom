@@ -7,6 +7,7 @@ import { MdStarRate } from "react-icons/md";
 import { MdStarHalf } from "react-icons/md";
 import { MdStarOutline } from "react-icons/md";
 import { PiSealPercent } from "react-icons/pi";
+import BuyAndAddToCart from '../components/buyComponents/BuyAndAddToCart';
 
 
 const AboutPage = () => {
@@ -38,13 +39,11 @@ const AboutPage = () => {
                         <h1 className='product-title'>Samsung Galaxy S23 Ultra 5G AI Smartphone (Phantom Black, 12GB, 256GB Storage)</h1>
 
 
-
                         <Link to={``}>
                             <span className='link'>
                                 visit the company store
                             </span>
                         </Link> {/*lateer this must be replaced by link*/}
-
 
 
                         <div className='customers-purchase-record'>
@@ -241,7 +240,13 @@ const AboutPage = () => {
                             <p className='link'>7 days service Centre Replacement</p>
 
                         </div>
+                        <div className='service'>
 
+                            <img src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-returns._CB562506492_.png" alt="" className='icon-image' />
+
+                            <p className='link'>7 days service Centre Replacement</p>
+
+                        </div>
 
 
 
@@ -249,16 +254,14 @@ const AboutPage = () => {
 
 
 
-
-
-
                     <div className='available-colors-section'> {/*services section start*/}
 
                         <span className='selectedColor'>Colour:{"green | with exchange "}</span>
 
-                        <div className='color'>
+                        <div className='available-colors'>
 
-                            <img src="" alt="" />
+                            <img src="https://m.media-amazon.com/images/I/41Z2gCkqEUL._SS60_.jpg" alt="https://m.media-amazon.com/images/I/41Z2gCkqEUL._SS60_.jpg" className='color-image' />
+                            <img src="https://m.media-amazon.com/images/I/41Z2gCkqEUL._SS60_.jpg" alt="https://m.media-amazon.com/images/I/41Z2gCkqEUL._SS60_.jpg" className='color-image' />
 
 
                         </div>
@@ -267,7 +270,11 @@ const AboutPage = () => {
                     </div> {/*services section end*/}
 
 
-                    <div className='about-this-item'> {/*about-this-item start*/}
+
+                    <div className='about-this-item-section'> {/*about-this-item start*/}
+
+                        <span className='text'> About this item</span>
+
 
                         <ul className='about-item-list'>
 
@@ -281,6 +288,69 @@ const AboutPage = () => {
                                 and your tone nicer and let you sail through the life
                                 effortlessly, just like that!
                             </li>
+                            <li>
+                                Experience the power of Galaxy AI with
+                                S23 Ultra to effortlessly perfect your photos
+                                with Photo Assist, communicate quickly outside your
+                                language with Live Translate or pick the right
+                                tone with Chat Assist, Galaxy AI makes your
+                                memories brighter, your communication easier
+                                and your tone nicer and let you sail through the life
+                                effortlessly, just like that!
+                            </li>
+                            <li>
+                                Experience the power of Galaxy AI with
+                                S23 Ultra to effortlessly perfect your photos
+                                with Photo Assist, communicate quickly outside your
+                                language with Live Translate or pick the right
+                                tone with Chat Assist, Galaxy AI makes your
+                                memories brighter, your communication easier
+                                and your tone nicer and let you sail through the life
+                                effortlessly, just like that!
+                            </li>
+
+                            <li>
+                                Experience the power of Galaxy AI with
+                                S23 Ultra to effortlessly perfect your photos
+                                with Photo Assist, communicate quickly outside your
+                                language with Live Translate or pick the right
+                                tone with Chat Assist, Galaxy AI makes your
+                                memories brighter, your communication easier
+                                and your tone nicer and let you sail through the life
+                                effortlessly, just like that!
+                            </li>
+                            <li>
+                                Experience the power of Galaxy AI with
+                                S23 Ultra to effortlessly perfect your photos
+                                with Photo Assist, communicate quickly outside your
+                                language with Live Translate or pick the right
+                                tone with Chat Assist, Galaxy AI makes your
+                                memories brighter, your communication easier
+                                and your tone nicer and let you sail through the life
+                                effortlessly, just like that!
+                            </li>
+
+                            <li>
+                                Experience the power of Galaxy AI with
+                                S23 Ultra to effortlessly perfect your photos
+                                with Photo Assist, communicate quickly outside your
+                                language with Live Translate or pick the right
+                                tone with Chat Assist, Galaxy AI makes your
+                                memories brighter, your communication easier
+                                and your tone nicer and let you sail through the life
+                                effortlessly, just like that!
+                            </li>
+                            <li>
+                                Experience the power of Galaxy AI with
+                                S23 Ultra to effortlessly perfect your photos
+                                with Photo Assist, communicate quickly outside your
+                                language with Live Translate or pick the right
+                                tone with Chat Assist, Galaxy AI makes your
+                                memories brighter, your communication easier
+                                and your tone nicer and let you sail through the life
+                                effortlessly, just like that!
+                            </li>
+
                             <li>
                                 Experience the power of Galaxy AI with
                                 S23 Ultra to effortlessly perfect your photos
@@ -321,8 +391,12 @@ const AboutPage = () => {
 
                 </div>
 
+                <BuyAndAddToCart />
+
 
             </div> {/*flex-box-container end*/}
+
+
 
 
         </div>

@@ -6,16 +6,23 @@
 
     min-height: 100vh;
 
-    aspect-ratio: 1/1;
+    max-height: 100%;
 
     display: grid;
 
     grid-template-columns: minmax(0, 12%) 1fr minmax(0, 12%);
 
+    border: solid 5px rgb(0, 159, 29);
+
+
 }
 
 
 .main-container>.flex-box-container {
+
+    min-height: 100%;
+
+    max-height: auto;
 
     border: solid 1px red;
 
@@ -27,10 +34,12 @@
 
     grid-column-end: 2;
 
+    column-gap: 6px;
 
-
+ 
 
 }
+
 
 
 .main-container>.flex-box-container> :nth-child(1) {
@@ -48,6 +57,7 @@
     min-height: 2rem;
 
     max-height: auto;
+
 
 }
 
@@ -78,7 +88,6 @@
 }
 
 
-
 .main-container>.flex-box-container> :nth-child(2)>img {
 
     width: 100%;
@@ -91,11 +100,14 @@
 .main-container>.flex-box-container>.product-information-box {
 
 
+    min-width: 50rem;
 
-    min-width: 35rem;
     max-width: 50rem;
 
-    overflow-wrap: break-word;
+
+    height: auto;
+
+
 
 }
 
@@ -187,8 +199,8 @@
     display: flex;
 
     flex-direction: column;
- 
-    justify-content:space-around;
+
+    justify-content: space-around;
 
     align-items: left;
 
@@ -216,7 +228,6 @@
     font-weight: bold;
 
 }
-
 
 
 
@@ -275,7 +286,7 @@
 
     border: solid 1px black;
 
-    font-weight:600;
+    font-weight: 600;
 
     align-items: center;
 
@@ -347,7 +358,6 @@
 
 
 
-
 .main-container>.flex-box-container>.product-information-box .offers-section .offers-box-slider .offer-box {
 
     background-color: rgb(255, 255, 255);
@@ -357,6 +367,7 @@
     display: flex;
 
     min-width: 15rem;
+
     max-width: 15rem;
 
     flex-direction: column;
@@ -392,17 +403,13 @@
 
     font-size: 1.5rem;
 
-
     align-items: center;
 
     display: flex;
 
 
 
-
-
 }
-
 
 
 
@@ -418,12 +425,11 @@
 
     font-size: 1.5rem;
 
-    align-items: end;
+    align-items: center;
 
+    justify-content: left;
 
 }
-
-
 
 
 
@@ -437,21 +443,19 @@
 
     max-height: 100%;
 
+    overflow-wrap: break-word;
+
     align-items: center;
 
     text-align: center;
-
-
 
 }
 
 
 
-
-
 .main-container>.flex-box-container>.product-information-box .services-with-product-section .service>.icon-image {
 
-    width: 3.5rem;
+    width: 3.2rem;
 
     min-height: 100%;
 
@@ -460,7 +464,6 @@
     align-items: center;
 
     text-align: center;
-
 
 
 }
@@ -485,8 +488,134 @@
 
     overflow-wrap: break-word;
 
-    font-size: 14px;
+
+    font-size: 10px;
 
 
+}
+
+
+
+.main-container>.flex-box-container>.product-information-box .available-colors-section {
+
+    min-width: 100%;
+
+    max-width: 100%;
+
+}
+
+
+
+.main-container>.flex-box-container>.product-information-box .available-colors-section> :nth-child(1) {
+
+    font-size: large;
+
+    display: flex;
+
+    width: 100%;
+
+}
+
+
+.main-container>.flex-box-container>.product-information-box .available-colors-section> :nth-child(2) {
+
+    width: 100%;
+
+    min-height: 6rem;
+
+    max-height: 10rem;
+
+    display: flex;
+
+    justify-content: left;
+
+    align-items: center;
+
+    overflow-x: scroll;
+
+    column-gap: 4px;
+
+}
+
+
+.main-container>.flex-box-container>.product-information-box .available-colors-section> :nth-child(2)>.color-image {
+
+    min-width: 6rem;
+
+    max-width: 8rem;
+
+    aspect-ratio: 1/1;
+
+    border: solid 1px black;
+
+    border-radius: 0.4rem;
+
+}
+
+
+.main-container>.flex-box-container>.product-information-box .about-this-item-section {
+
+    position: relative;
+
+    min-width: 100%;
+
+    max-width: 100%;
+
+    min-height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+
+    border: solid 1px black;
+
+
+}
+
+
+
+.main-container>.flex-box-container>.product-information-box .about-this-item-section> :nth-child(1) {
+
+    font-size: larger;
+
+    font-weight: 600;
+
+    position: relative;
+
+    display: block;
+
+    background-color: brown;
+
+
+
+}
+
+
+
+.main-container>.flex-box-container>.product-information-box .about-this-item-section>ul {
+
+    position: absolute;
+
+    top: 2.5rem;
+
+    left: 4%;
+
+    list-style-type: disc;
+
+    width: 40rem;
+
+    height: auto;
+
+    gap: 1rem;
+
+
+}
+
+
+
+.main-container>.flex-box-container>.product-information-box .about-this-item-section>ul li {
+
+    color: black;
 
 }
