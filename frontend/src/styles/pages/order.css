@@ -8,8 +8,6 @@
 
     color: black;
 
-
-
     display: grid;
 
     grid-template-columns: 30% 1fr 30%;
@@ -21,8 +19,6 @@
 .grid-container>.content-container {
 
     grid-column: 2/2;
-
-    border: solid 1px red;
 
     display: flex;
 
@@ -42,8 +38,6 @@
 
     height: 10rem;
 
-    border: solid 1px black;
-
 }
 
 
@@ -60,7 +54,7 @@
     display: flex;
     column-gap: 2rem;
 
-    border: solid 1px red;
+
 
 
 }
@@ -70,14 +64,17 @@
 .grid-container>.content-container .row-1 .search-bar form {
 
     width: 100%;
+
     display: flex;
 
     justify-content: right;
 
     min-height: 100%;
+
     max-height: 100%;
 
     margin: 0;
+
     padding: 0;
 
 }
@@ -89,14 +86,14 @@
 
 
     min-height: 100%;
+
     max-height: 100%;
 
     min-width: 19rem;
+
     max-width: 20rem;
 
 }
-
-
 
 
 .grid-container>.content-container .row-1 .search-bar form>.btn {
@@ -105,8 +102,8 @@
 
     border-radius: 1rem;
 
-
     min-width: 8rem;
+
     max-width: 10rem;
 
     padding: 5px;
@@ -122,9 +119,19 @@
 
 .grid-container>.content-container .row-2 {
 
+   
+
+    min-height: 4rem;
+
+    max-height: 4rem;
+
+    align-items: center;
+
     display: flex;
 
 }
+
+
 
 
 
@@ -132,7 +139,32 @@
 
     display: flex;
 
-    gap: 1rem;
+    gap: 2rem;
+
+}
+
+
+.grid-container>.content-container .row-2 ul li {
+
+ 
+
+    height: 2.2rem;
+
+    display: flex;
+
+    justify-content: center;
+
+    text-align: center;
+ 
+  
+
+}
+
+.grid-container>.content-container .row-2 ul li:hover {
+
+    border-bottom:solid 1px black;
+
+    padding-bottom: 3px;
 
 }
 
@@ -146,37 +178,42 @@
 
     gap: 1rem;
 
+ 
+
 }
 
 
 
 .grid-container>.content-container .orders-container>.order {
 
-    height: 26rem;
+    min-height: 26rem;
 
-    border: solid 1px red;
+    max-height: 28rem;
 
-    
+    border: solid 1px rgb(174, 174, 174);
+
+    border-radius: 0.8rem;
+
     display: flex;
-    
+
     flex-direction: column;
-    
-    gap: 1rem;
-    
+
+    overflow: hidden;
+
 }
 
 
 
 
 .grid-container>.content-container .orders-container>.order>.row1 {
-    
-    height: 7rem;
-    
+
+    min-height: 6rem;
+    max-height: 7rem;
+
     padding: 0 1rem 0 1rem;
 
     background-color: rgb(236, 236, 236);
 
-    border: solid 1px green;
 
     display: flex;
 
@@ -186,7 +223,6 @@
 
 
 }
-
 
 
 
@@ -195,14 +231,14 @@
     display: flex;
 
     min-width: 30rem;
-    min-width: 30rem;
+
+    max-width: 30rem;
 
     justify-content: space-between;
 
     text-align: center;
 
     align-items: center;
- 
 
     color: rgb(87, 87, 87);
 
@@ -211,11 +247,13 @@
 }
 
 
+
 .grid-container>.content-container .orders-container>.order>.row1 .column1>.order-placed-span {
 
     display: flex;
 
     font-size: auto;
+
     flex-direction: column;
 
     align-items: center;
@@ -228,18 +266,16 @@
 
     min-width: 9.5rem;
 
-    max-width: 9.5rem;
-
-
+    max-width: 10rem;
 
     min-height: 100%;
-    max-height: auto;
 
-   
+    max-height: auto;
 
 
 
 }
+
 
 
 .grid-container>.content-container .orders-container>.order>.row1 .column1>.order-total-price-span {
@@ -247,6 +283,7 @@
     display: flex;
 
     font-size: auto;
+
     flex-direction: column;
 
     align-items: center;
@@ -261,16 +298,16 @@
 
     max-width: 9.5rem;
 
-
-
     min-height: 100%;
-    max-height: auto;
 
- 
+    max-height: auto;
 
 
 
 }
+
+
+
 
 .grid-container>.content-container .orders-container>.order>.row1 .column1>.ship-column {
 
@@ -296,7 +333,7 @@
     min-height: 100%;
     max-height: auto;
 
- 
+
 
 
 
@@ -335,24 +372,15 @@
 
 
 
-
-
-
-
-
-
-
-
-
 .grid-container>.content-container .orders-container>.order>.row1 .column2 {
 
-  
+
 
     color: rgb(87, 87, 87);
 
 
     width: 22rem;
-    
+
     font-size: small;
 
     display: flex;
@@ -365,33 +393,196 @@
 
     align-items: center;
 
+
+
 }
 
 
 
-
-.grid-container>.content-container .orders-container>.order>.row1 .column2 > .row2 {
-
- 
+.grid-container>.content-container .orders-container>.order>.row1 .column2>.row2 {
 
     color: rgb(25, 121, 255);
 
-
     width: 19rem;
-    
+
     font-size: 1.3rem;
 
     display: flex;
 
     justify-content: space-between;
- 
 
- 
+}
+
+
+
+.grid-container>.content-container .orders-container>.order>.row2 {
+
+    display: flex;
+
+    padding: 1rem 1rem 1rem 1rem;
+
+    height: 100%;
+
+
+}
+
+
+
+.grid-container>.content-container .orders-container>.order>.row2>.column-1 {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 100%;
+
+    max-height: 100%;
+
+    justify-content: space-between;
+
+
+
+}
+
+
+
+.grid-container>.content-container .orders-container>.order>.row2>.column-1>.row1 {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+
+
+
+}
+
+
+
+.grid-container>.content-container .orders-container>.order>.row2>.column-1>.row1> :nth-child(2) {
+
+    color: rgb(0, 186, 0);
+
+    font-size: small;
+
+}
+
+
+
+.grid-container>.content-container .orders-container>.order>.row2>.column-1>.row2 {
+
+
+    display: flex;
+
+    text-align: start;
+
+    justify-content: center;
+
+}
+
+
+
+.grid-container>.content-container .orders-container>.order>.row2>.column-1>.row2 > p {
+
+font-size: 1.5rem;
 }
 
 
 
 
 
+.grid-container>.content-container .orders-container>.order>.row2>.column-1>.row2>.product-image-container {
 
 
+    height: 10rem;
+
+    aspect-ratio: 1.2/1.2;
+
+    align-items: center;
+
+    text-align: center;
+
+    display: flex;
+
+    justify-content: center;
+
+
+}
+
+
+
+.grid-container>.content-container .orders-container>.order>.row2>.column-1>.row2>.product-image-container>img {
+
+    height: 90%;
+    width: 90%;
+
+}
+
+
+.grid-container>.content-container .orders-container>.order>.row2>.column-1>.row3 {
+
+
+    display: flex;
+
+    text-align: start;
+
+    font-size: small;
+
+
+}
+
+
+
+
+.grid-container>.content-container .orders-container>.order>.row2>.column-2 {
+    width: 20rem;
+
+
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    row-gap: 1rem;
+
+}
+
+
+
+.grid-container>.content-container .orders-container>.order>.row2>.column-2>.btn {
+
+    min-width: 18rem;
+    max-width: 20rem;
+
+    min-height: 3rem;
+    max-height: 3rem;
+
+    border: none;
+
+    border-radius: 1.5rem;
+
+    text-align: center;
+
+}
+
+
+
+
+.grid-container>.content-container .orders-container>.order>.row2>.column-2>.track-package-btn {
+
+    background-color: rgb(255, 183, 14);
+
+}
+
+
+.grid-container>.content-container .orders-container>.order>.row2>.column-2>.view-order-edit-order-btn {
+
+    background-color: white;
+
+    border: solid 0.9px black;
+
+}

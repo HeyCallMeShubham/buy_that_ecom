@@ -32,7 +32,9 @@ body {
 
 .link{
 
-  color: blue;
+ 
+ 
+  color: rgb(0, 132, 255);
 
   text-decoration: none;
 
@@ -41,7 +43,7 @@ body {
 
 .link:hover{
 
-  color: blue;
+  color: rgb(0, 76, 255);
 
   cursor: pointer;
 
