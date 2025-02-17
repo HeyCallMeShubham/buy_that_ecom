@@ -61,6 +61,8 @@ interface InstanceMethods {
 
 
 
+
+
 interface IModel extends Model<IUser, InstanceMethods> {
 
     isPasswordCorrect: (password: string) => string;
@@ -74,6 +76,8 @@ interface IModel extends Model<IUser, InstanceMethods> {
     generateRefreshToken: () => string;
 
 }
+
+
 
 
 
@@ -112,6 +116,11 @@ const userSchema = new Schema<IUser, InstanceMethods>({
 
 
 
+
+
+
+
+
 userSchema.methods.generateRefreshToken = async function () {
 
     const JWT_REFRESH_TOKEN_SECRETKEY: string | undefined = process.env.JWT_REFRESH_TOKEN_SECREKEY
@@ -130,13 +139,16 @@ userSchema.methods.generateRefreshToken = async function () {
 
 userSchema.methods.generateAccessToken = async function () {
 
-    const JWT_ACCESS_TOKEN_SECRETKEY: string | undefined = process.env.JWT_ACCESS_TOKEN_SECRETKEY 
+    const JWT_ACCESS_TOKEN_SECRETKEY: string | undefined = process.env.JWT_ACCESS_TOKEN_SECRETKEY
 
-    const accessToken = await jwt.sign({ id: this._id, email: this.email, number: this.number },JWT_ACCESS_TOKEN_SECRETKEY as string, { expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRY });
+    const accessToken = await jwt.sign({ id: this._id, email: this.email, number: this.number }, JWT_ACCESS_TOKEN_SECRETKEY as string, { expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRY });
 
     return accessToken
 
 };
+
+
+
 
 
 
@@ -154,6 +166,10 @@ userSchema.methods.generateSalt = function (saltRounds: number) {
 
 
 
+
+
+
+
 userSchema.methods.hashThePassword = function (password: string) {
 
     const salt = this.generateSalt(12)
@@ -161,6 +177,7 @@ userSchema.methods.hashThePassword = function (password: string) {
     return bcrypt.hashSync(this.password, salt)
 
 }
+
 
 
 
@@ -195,8 +212,8 @@ userSchema.pre("save", function (next) {
 
 
 
-type user = InferSchemaType<typeof userSchema>;
 
+type user = InferSchemaType<typeof userSchema>;
 
 
 
