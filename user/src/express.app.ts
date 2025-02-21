@@ -19,9 +19,9 @@ const expressApp = (): Express => {
 
     }));
 
-    app.use(bodyParser.json())
-    app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }))
-    app.use(express.static("public"))
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
+    app.use(express.static("public"));
 
 
 
