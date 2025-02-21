@@ -9,7 +9,7 @@ import cors from "cors";
 const app: Express = express();
 
 
-const expressApp = () => {
+const expressApp = (): Express => {
 
     app.use(cors({
 
