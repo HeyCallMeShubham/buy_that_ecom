@@ -5,12 +5,13 @@ const errorMiddleware = (err: any, req: Request, res: Response, next: NextFuncti
 
     console.log(err, 'error');
 
-    const status: number = err.statusCode
-    const message: string = err.message
-    const data: undefined | null = null
-    const errors: any[] | any = err.errors
-    const success: boolean = false
-    const stack: null = null
+    const status: number = err.statusCode;
+    const message: string = err.message;
+    const data: undefined | null = null;
+    const errors: any[] | any = err.errors;
+    const success: boolean = false;
+    const stack: null = null;
+
 
 
     res.status(status).json({

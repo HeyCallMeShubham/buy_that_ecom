@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express"
+import { Errorhandler } from "./ErrorHandler";
 
 
 export const asyncHandler = (func: any) => {
@@ -7,19 +8,16 @@ export const asyncHandler = (func: any) => {
 
         try {
 
-            await func(req, res, next)
+
+            await func(req, res, next);
 
 
         } catch (err: any) {
 
             console.log(err);
 
-            res.status(err.status || 500).json({
+            next(new Errorhandler(err.statusCode, err.message));
 
-                success: false,
-                message: err.message
-
-            })
 
         }
 
