@@ -1,8 +1,5 @@
 
 
-
-
-
 class ErrorHandler extends Error {
 
     statusCode: number
@@ -20,9 +17,5 @@ class ErrorHandler extends Error {
 }
 
 
-
 export { ErrorHandler }
-
-
-
 
