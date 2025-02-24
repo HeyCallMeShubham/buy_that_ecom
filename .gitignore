@@ -1,13 +1,7 @@
-/backend/node_modules/
-/cart/node_modules/
-/user/node_modules/
-/gateway/node_modules/
-/product/node_modules/
-/backend/.env
-/user/.env
-/notifications/.env
-/cart/.env
-/gateway/.env
-/product/.env
 
 
+# Ignore all node_modules directories
+**/node_modules/
+
+# Ignore all .env files
+**/.env
