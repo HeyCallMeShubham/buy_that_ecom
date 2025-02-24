@@ -1,13 +1,13 @@
-backend/node_modules/
-cart/node_modules/
-user/node_modules/
-gateway/node_modules/
-product/node_modules/
-backend/.env
-user/.env
-notifications/.env
-cart/.env
-gateway/.env
-product/.env
+/backend/node_modules/
+/cart/node_modules/
+/user/node_modules/
+/gateway/node_modules/
+/product/node_modules/
+/backend/.env
+/user/.env
+/notifications/.env
+/cart/.env
+/gateway/.env
+/product/.env
 
 
