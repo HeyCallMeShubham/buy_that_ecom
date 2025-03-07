@@ -2,18 +2,13 @@
 import mongoose, { Schema, Document, Date, InferSchemaType, model } from "mongoose";
 
 
-
-
-
 enum planStatus {
 
     NONE = "NONE",
     BASIC = "BASIC",
     PREMIUM = "PREMIUM"
 
-
 }
-
 
 
 
@@ -21,9 +16,9 @@ interface IUser extends Document {
 
     firstName: string
     lastName: string
-    fullName: string
+    userName: string
     email: string
-    phoneNumber: number
+    phoneNumber: string
     planStatus: planStatus
     password: string
     profileImage: string
@@ -45,10 +40,12 @@ const userSchema = new Schema<IUser>({
 
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
+    userName: { type: String, required: true },
     password: { type: String, required: true },
     email: { type: String, required: true },
-    phoneNumber: { type: Number, required: true },
+    phoneNumber: { type: String, required: true },
     planStatus: { type: String, default: planStatus.NONE },
+    profileImage: { type: String },
     city: { type: String, required: true },
     state: { type: String, required: true },
     country: { type: String, required: true },

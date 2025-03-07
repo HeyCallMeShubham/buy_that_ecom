@@ -7,6 +7,8 @@ class ErrorHandler extends Error {
 
     constructor(statusCode: number, message: string) {
 
+        console.log(statusCode, 'statototocode')
+
         super();
 
         this.statusCode = statusCode;
