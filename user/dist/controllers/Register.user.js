@@ -17,12 +17,11 @@ const ErrorHandler_1 = require("../utils/ErrorHandler");
 const User_Model_1 = require("../models/User.Model");
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
-const cloudinary_1 = require("../utils/cloudinary");
+const cloudinary_1 = require("../service/cloudinary");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
-const RegisterUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const AsyncHandler_1 = require("../utils/AsyncHandler");
+const RegisterUser = (0, AsyncHandler_1.AsyncHandler)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c, _d, _e;
-    console.log(req.file, "req.file");
-    console.log(req.body, "req.body");
     const { firstName, lastName, userName, email, phoneNumber, password, city, state, country } = req.body;
     try {
         const filePathToRemoveFrom = path_1.default.resolve(__dirname, "../images");
@@ -34,9 +33,8 @@ const RegisterUser = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
             }
             throw new ErrorHandler_1.ErrorHandler(409, "user with this email already registered");
         }
-        const salt = yield bcryptjs_1.default.genSalt(12);
-        const hashedPassword = yield bcryptjs_1.default.hash(password, salt);
-        console.log(hashedPassword, 'passowrd');
+        const salt = yield bcryptjs_1.default.genSaltSync(12);
+        const hashedPassword = yield bcryptjs_1.default.hashSync(password, salt);
         const user = new User_Model_1.userModel({
             firstName,
             lastName,
@@ -56,13 +54,16 @@ const RegisterUser = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
                 if ((_d = req.file) === null || _d === void 0 ? void 0 : _d.filename) {
                     fs_1.default.unlinkSync(`${filePathToRemoveFrom}/${(_e = req.file) === null || _e === void 0 ? void 0 : _e.filename}`);
                 }
+                ;
                 console.log("user created succesffuyl");
             }
+            ;
         }
+        ;
     }
     catch (err) {
         console.log(err, 'error in register cntlr');
         throw new ErrorHandler_1.ErrorHandler(err.statusCode, err.message);
     }
-});
+}));
 exports.RegisterUser = RegisterUser;

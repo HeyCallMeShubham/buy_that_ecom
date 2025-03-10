@@ -8,6 +8,7 @@ import fs from "fs";
 import { uploadOnCloudinary } from "../service/cloudinary";
 import bcrypt from "bcryptjs";
 import { AsyncHandler } from "../utils/AsyncHandler";
+import { ApiResponse } from "../utils/ApiResponse";
 
 
 const RegisterUser = AsyncHandler(async (req: Request, res: Response, next: NextFunction) => {
@@ -66,11 +67,17 @@ const RegisterUser = AsyncHandler(async (req: Request, res: Response, next: Next
 
                 if (req.file?.filename) {
 
-                    fs.unlinkSync(`${filePathToRemoveFrom}/${req.file?.filename}`);
+                    if(`${filePathToRemoveFrom}/${req.file?.filename}`){
+
+                        fs.unlinkSync(`${filePathToRemoveFrom}/${req.file?.filename}`);
+
+                    }
+
 
                 };
 
-                console.log("user created succesffuyl");
+
+                res.status(200).json(new ApiResponse(200, {}, "user registered successfully"));
 
             };
 
