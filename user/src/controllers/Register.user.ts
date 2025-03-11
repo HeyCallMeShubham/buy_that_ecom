@@ -27,19 +27,19 @@ const RegisterUser = AsyncHandler(async (req: Request, res: Response, next: Next
 
             if (req.file?.filename) {
 
-                const filePathToRemove = `${filePathToRemoveFrom}/${req.file.filename}`;
+                if(`${filePathToRemoveFrom}/${req.file?.filename}`){
+ 
+                    fs.unlinkSync(`${filePathToRemoveFrom}/${req.file?.filename}`);
 
-                fs.unlinkSync(filePathToRemove);
-
+                }
+            
             }
 
             throw new ErrorHandler(409, "user with this email already registered");
 
         }
 
-        const salt = await bcrypt.genSaltSync(12);
 
-        const hashedPassword = await bcrypt.hashSync(password, salt);
 
         const user: any = new userModel({
 
@@ -54,6 +54,8 @@ const RegisterUser = AsyncHandler(async (req: Request, res: Response, next: Next
             country
 
         });
+
+
 
         if (user) {
 

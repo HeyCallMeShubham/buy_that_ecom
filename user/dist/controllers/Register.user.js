@@ -18,23 +18,22 @@ const User_Model_1 = require("../models/User.Model");
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
 const cloudinary_1 = require("../service/cloudinary");
-const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const AsyncHandler_1 = require("../utils/AsyncHandler");
+const ApiResponse_1 = require("../utils/ApiResponse");
 const RegisterUser = (0, AsyncHandler_1.AsyncHandler)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
     const { firstName, lastName, userName, email, phoneNumber, password, city, state, country } = req.body;
     try {
         const filePathToRemoveFrom = path_1.default.resolve(__dirname, "../images");
         const userExist = yield User_Model_1.userModel.findOne({ email: email });
         if (userExist) {
             if ((_a = req.file) === null || _a === void 0 ? void 0 : _a.filename) {
-                const filePathToRemove = `${filePathToRemoveFrom}/${req.file.filename}`;
-                fs_1.default.unlinkSync(filePathToRemove);
+                if (`${filePathToRemoveFrom}/${(_b = req.file) === null || _b === void 0 ? void 0 : _b.filename}`) {
+                    fs_1.default.unlinkSync(`${filePathToRemoveFrom}/${(_c = req.file) === null || _c === void 0 ? void 0 : _c.filename}`);
+                }
             }
             throw new ErrorHandler_1.ErrorHandler(409, "user with this email already registered");
         }
-        const salt = yield bcryptjs_1.default.genSaltSync(12);
-        const hashedPassword = yield bcryptjs_1.default.hashSync(password, salt);
         const user = new User_Model_1.userModel({
             firstName,
             lastName,
@@ -47,15 +46,17 @@ const RegisterUser = (0, AsyncHandler_1.AsyncHandler)((req, res, next) => __awai
             country
         });
         if (user) {
-            const uploadedImage = yield (0, cloudinary_1.uploadOnCloudinary)((_b = req.file) === null || _b === void 0 ? void 0 : _b.path, (_c = req === null || req === void 0 ? void 0 : req.file) === null || _c === void 0 ? void 0 : _c.filename);
+            const uploadedImage = yield (0, cloudinary_1.uploadOnCloudinary)((_d = req.file) === null || _d === void 0 ? void 0 : _d.path, (_e = req === null || req === void 0 ? void 0 : req.file) === null || _e === void 0 ? void 0 : _e.filename);
             user.profileImage = uploadedImage === null || uploadedImage === void 0 ? void 0 : uploadedImage.url;
             const createdUser = yield user.save();
             if (createdUser) {
-                if ((_d = req.file) === null || _d === void 0 ? void 0 : _d.filename) {
-                    fs_1.default.unlinkSync(`${filePathToRemoveFrom}/${(_e = req.file) === null || _e === void 0 ? void 0 : _e.filename}`);
+                if ((_f = req.file) === null || _f === void 0 ? void 0 : _f.filename) {
+                    if (`${filePathToRemoveFrom}/${(_g = req.file) === null || _g === void 0 ? void 0 : _g.filename}`) {
+                        fs_1.default.unlinkSync(`${filePathToRemoveFrom}/${(_h = req.file) === null || _h === void 0 ? void 0 : _h.filename}`);
+                    }
                 }
                 ;
-                console.log("user created succesffuyl");
+                res.status(200).json(new ApiResponse_1.ApiResponse(200, {}, "user registered successfully"));
             }
             ;
         }
