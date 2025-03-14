@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express"
 import { AsyncHandler } from "../utils/AsyncHandler"
 import { ErrorHandler } from "../utils/ErrorHandler";
-import { userModel } from "../models/User.Model";
+import { userModel } from "../models/user/User.Model";
 import { ApiResponse } from "../utils/ApiResponse";
 
 

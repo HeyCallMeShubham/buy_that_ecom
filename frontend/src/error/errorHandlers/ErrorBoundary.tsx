@@ -21,6 +21,7 @@ const ErrorBoundary = (error: any) => {
             <h2>status:{status}</h2>
             <h2>success status:{data.success ? "successful" : "unSuccessful"}</h2>
             <p>message:{data.message}</p>
+            <p>stack:{data.stack}</p>
 
         </div>
     )

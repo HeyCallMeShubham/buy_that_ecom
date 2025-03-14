@@ -1,8 +1,8 @@
 
 import mongoose, { Schema, Document, Date, InferSchemaType, model, Model } from "mongoose";
 import bcrypt from "bcryptjs";
-import { AsyncHandler } from "../utils/AsyncHandler";
-import { ErrorHandler } from "../utils/ErrorHandler";
+import { AsyncHandler } from "../../utils/AsyncHandler";
+import { ErrorHandler } from "../../utils/ErrorHandler";
 import jwt from "jsonwebtoken";
 
 
@@ -183,7 +183,7 @@ type user = InferSchemaType<typeof userSchema>;
 
 
 
-const userModel = model<user, IModel>("user", userSchema);
+const userModel = model<user, IModel>("User", userSchema);
 
 
 

@@ -2,7 +2,7 @@
 import { RegisterUser } from "./controllers/Register.user";
 import { expressApp } from "./express.app";
 import { errorMiddleware } from "./middlewares/error.middleware";
-import { userModel } from "./models/User.Model";
+import { userModel } from "./models/user/User.Model";
 
 const app = expressApp();
 

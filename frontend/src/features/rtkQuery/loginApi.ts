@@ -16,11 +16,7 @@ export const loginApi = createApi({
                 url: `/login`,
                 method: "POST",
                 body: payload,
-                headers: {
-
-                    "Content-Type": "application/json"
-
-                }
+         
             })
         })
     })

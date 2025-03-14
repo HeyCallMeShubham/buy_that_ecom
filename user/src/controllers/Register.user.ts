@@ -2,7 +2,7 @@
 
 import { Request, Response, NextFunction } from "express";
 import { ErrorHandler } from "../utils/ErrorHandler";
-import { userModel } from "../models/User.Model";
+import { userModel } from "../models/user/User.Model";
 import path from "path";
 import fs from "fs";
 import { uploadOnCloudinary } from "../service/cloudinary";

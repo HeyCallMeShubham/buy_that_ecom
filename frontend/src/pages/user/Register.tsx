@@ -1,8 +1,13 @@
+
 import React, { useEffect, useState } from 'react';
+
 import { useRegisterApiMutation } from '../../features/rtkQuery/RegisterApi';
+
 import ErrorBoundary from '../../error/errorHandlers/ErrorBoundary';
 
 import "../../styles/pages/register.css";
+
+
 
 const Register = () => {
 
@@ -35,8 +40,6 @@ const Register = () => {
 
 
 
-
-
     const [registerApi, { data, error, isLoading, isSuccess }]: any = useRegisterApiMutation();
 
 
@@ -60,7 +63,6 @@ const Register = () => {
         e.preventDefault();
 
         try {
-
 
             if (firstName === "" || lastName === "" || userName === "" || userEmail === "" || phoneNumber === "" || city === "" || state === "" || country === "" || password === "" || confPassword === "") {
 
@@ -95,6 +97,8 @@ const Register = () => {
                     formData.append("country", country);
 
 
+                    console.log("FormData:", Object.fromEntries(formData.entries())); // Debugging
+
 
                     registerApi(formData);
 
@@ -103,7 +107,6 @@ const Register = () => {
                     alert("confirm Password does not match with password");
 
                 }
-
 
             }
 
@@ -125,7 +128,7 @@ const Register = () => {
 
     if (isLoading) {
 
-        return <h1>....Loading </h1>
+        return <h1>.....Loading </h1>
 
     }
 
@@ -141,26 +144,28 @@ const Register = () => {
 
         <div className='register-container'>
 
-            <form onSubmit={handleSubmit} encType='multipart/form' style={{ display: "flex", flexDirection: "column" }}>
+            <form onSubmit={handleSubmit} encType='multipart/form-data' style={{ display: "flex", flexDirection: "column" }}>
+
 
                 <label htmlFor="profileImage">
+
                     profileImage
                     <input type='file' id='profileImage' name='profileImage' onChange={(e: any) => setSelectedFile(e.target.files[0])} />
                 </label>
 
 
                 <label htmlFor='firstName'>
+
                     firstName
                     <input type='text' id='firstName' name='firstName' onChange={(e: any) => setFirstName(e.target.value)} />
                 </label>
 
 
-
                 <label htmlFor='lastName'>
+
                     lastName
                     <input type='text' id='lastName' name='lastName' onChange={(e: any) => setLastName(e.target.value)} />
                 </label>
-
 
 
                 <label htmlFor='userName'>
@@ -171,6 +176,7 @@ const Register = () => {
 
 
                 <label htmlFor='userEmail'>
+
                     userEmail
                     <input type='email' id='userEmail' name='userEmail' onChange={(e: any) => setUserEmail(e.target.value)} />
                 </label>
@@ -178,6 +184,7 @@ const Register = () => {
 
 
                 <label htmlFor='phoneNumber'>
+
                     phoneNumber
                     <input type='tel' id='phoneNumber' name='phoneNumber' onChange={(e: any) => setPhoneNumber(e.target.value)} />
                 </label>
@@ -185,31 +192,35 @@ const Register = () => {
 
 
                 <label htmlFor='password'>
+
                     password
                     <input type='password' id='passsword' name='password' onChange={(e: any) => setPassword(e.target.value)} />
                 </label>
 
 
                 <label htmlFor='confPassword'>
+
                     confPasssword
                     <input type='password' id='confPasssword' name='confPassword' onChange={(e: any) => setConfPassword(e.target.value)} />
                 </label>
 
 
-
                 <label htmlFor='city'>
+
                     city
                     <input type='tel' id='city' name='city' onChange={(e: any) => setCity(e.target.value)} />
                 </label>
 
 
                 <label htmlFor='state'>
+
                     state
                     <input type='text' id='state' name='state' onChange={(e: any) => setState(e.target.value)} />
                 </label>
 
 
                 <label htmlFor='country'>
+
                     country
                     <input type='text' id='country' name='country' onChange={(e: any) => setCountry(e.target.value)} />
                 </label>

@@ -64,5 +64,5 @@ userSchema.pre("save", function (next) {
     this.password = hashedPassword;
     next();
 });
-const userModel = (0, mongoose_1.model)("user", userSchema);
+const userModel = (0, mongoose_1.model)("User", userSchema);
 exports.userModel = userModel;

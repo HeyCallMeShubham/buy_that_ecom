@@ -10,6 +10,7 @@ import bcrypt from "bcryptjs";
 import { Errorhandler } from "../../utils/ErrorHandler";
 
 import { ApiResponse } from "../../utils/apiResponse";
+
 import { generateAccessAndRefreshToken } from "../../utils/generateAccessAndRefreshToken";
 
 
@@ -24,11 +25,11 @@ const LoginUser = asyncHandler(async (req: Request, res: Response, next: NextFun
 
 
     try {
+    
 
-        
         const user: any = await userModel.findOne({ $or: [{ email: email }, { userName: userName }] });
 
-        
+
         if (!user) throw new Errorhandler(404, 'no user with this email or username exist');
         
         
@@ -37,7 +38,7 @@ const LoginUser = asyncHandler(async (req: Request, res: Response, next: NextFun
         
         if (!isCredentialsValid) throw new Errorhandler(401, "invalid credentials");
         
-        
+
         const { refreshToken, accessToken } = await generateAccessAndRefreshToken(user);
 
 

@@ -10,6 +10,8 @@ import jwt from "jsonwebtoken";
 
 
 
+
+
 enum planStatus {
 
     NONE = "NONE",
@@ -49,11 +51,11 @@ interface InstanceMethods {
 
     generateSalt: (saltRounds: number) => string;
 
-    hashThePassword: (saltRounds: number) => string;
+    hashThePassword: (password:string) => string;
 
-    generateAccessToken: (saltRounds: number) => string;
+    generateAccessToken: () => string;
 
-    generateRefreshToken: (saltRounds: number) => string;
+    generateRefreshToken: () => string;
 
 }
 
@@ -117,21 +119,16 @@ const userSchema = new Schema<IUser, InstanceMethods>({
 
 
 
-
-
-
-
 userSchema.methods.generateRefreshToken = async function () {
 
-    const JWT_REFRESH_TOKEN_SECRETKEY: string | undefined = process.env.JWT_REFRESH_TOKEN_SECREKEY
+    const JWT_REFRESH_TOKEN_SECRETKEY: string | undefined = process.env.JWT_REFRESH_TOKEN_SECRETKEY
 
     const refreshToken = await jwt.sign({ id: this._id, email: this.email, number: this.number }, JWT_REFRESH_TOKEN_SECRETKEY as string, { expiresIn: process.env.JWT_REFRESH_TOKEN_EXPIRY });
 
     return refreshToken;
 
+
 };
-
-
 
 
 
@@ -143,10 +140,10 @@ userSchema.methods.generateAccessToken = async function () {
 
     const accessToken = await jwt.sign({ id: this._id, email: this.email, number: this.number }, JWT_ACCESS_TOKEN_SECRETKEY as string, { expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRY });
 
-    return accessToken
+    return accessToken;
+
 
 };
-
 
 
 
@@ -172,12 +169,11 @@ userSchema.methods.generateSalt = function (saltRounds: number) {
 
 userSchema.methods.hashThePassword = function (password: string) {
 
-    const salt = this.generateSalt(12)
+    const salt = this.generateSalt(12);
 
-    return bcrypt.hashSync(this.password, salt)
+    return bcrypt.hashSync(this.password, salt);
 
 }
-
 
 
 

@@ -15,21 +15,17 @@ import "../../styles/pages/login.css"
 const Login = () => {
 
 
-
   const [userName, setUserName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [userPassword, setPassword] = useState<string>("");
+
 
 
   const dispatch: Dispatch = useDispatch();
 
 
 
-
-
   const [loginApi, { data, isLoading, isSuccess, error }]: any = useLoginApiMutation();
-
-
 
 
 
@@ -48,27 +44,12 @@ const Login = () => {
 
   useEffect(() => {
 
-
     console.log(userName, 'userName', email, "userName", userPassword, 'userPassword');
 
   }, [userName, email, userPassword]);
 
 
-
-
-
-
-
-
-  if (error) {
-
-    console.log(error, 'error');
-
-  }
-
   if (data) {
-
-
 
     dispatch(setCurrentUser({ data: data.data, isLoginSuccess: isSuccess }));
 
@@ -94,7 +75,7 @@ const Login = () => {
   }
 
 
-  
+
 
 
   if (isSuccess && data) {

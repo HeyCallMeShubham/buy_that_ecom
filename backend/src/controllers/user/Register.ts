@@ -20,7 +20,6 @@ const RegisterUser = asyncHandler(async (req: Request, res: Response, next: Next
     console.log(req.body, 'req.body');
 
 
-
     const filePathToRemoveFrom = path.resolve(__dirname, "../../images");
 
 
@@ -35,7 +34,7 @@ const RegisterUser = asyncHandler(async (req: Request, res: Response, next: Next
 
             fs.unlinkSync(`${filePathToRemoveFrom}/${req.file?.filename}`);
 
-            throw new Errorhandler(409, "User With This Email Already Exist")
+            throw new Errorhandler(409, "User With This Email Already Exist");
 
         };
 
@@ -57,8 +56,6 @@ const RegisterUser = asyncHandler(async (req: Request, res: Response, next: Next
 
 
 
-
-
         if (user) {
 
             const profileImage: any = await uploadOnCloudinary(req.file?.path, req.file?.filename);
@@ -66,7 +63,6 @@ const RegisterUser = asyncHandler(async (req: Request, res: Response, next: Next
             user.profileImage = profileImage.url;
 
             const createdUser = await user.save();
-
 
 
             if (createdUser) {
@@ -87,7 +83,7 @@ const RegisterUser = asyncHandler(async (req: Request, res: Response, next: Next
 
     }
 
-})
+});
 
 
 

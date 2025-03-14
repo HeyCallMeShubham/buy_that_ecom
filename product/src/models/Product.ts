@@ -1,26 +1,29 @@
 
-import mongoose, { Model, Schema, InferSchemaType, model } from "mongoose";
+import mongoose, { Model, Schema, InferSchemaType, model, ObjectId, Document } from "mongoose";
 
 
+interface IProduct extends Document {
 
-interface IProduct {
-
-    productTitle: string
-    productDescription: string
-    productImages: string[]
-    productStore: string
-    productPrice: number
-    productDiscount: number
-    productCategory: string
-    productBrand: string
-    productInStocks: number
+    productTitle: string;
+    productDescription: string;
+    productImages: string[];
+    productStore: string;
+    productPrice: number;
+    productDiscount?: number;
+    productCategory: string;
+    productBrand: string;
+    productInStocks: number;
+    productBy: ObjectId;
 
 }
 
 
 
 
-const ProductSchema = new Schema<IProduct>({
+
+
+
+const productSchema = new Schema<IProduct>({
 
     productTitle: { type: String, required: true },
     productDescription: { type: String, required: true },
@@ -31,15 +34,18 @@ const ProductSchema = new Schema<IProduct>({
     productCategory: { type: String, required: true },
     productBrand: { type: String, required: true },
     productInStocks: { type: Number, required: true },
+    productBy: { type: Schema.Types.ObjectId, required: true } 
 
 });
 
 
 
-const ProductModel = model<IProduct>("buy_that_ecom_product", ProductSchema)
+
+
+const ProductModel = model<IProduct>("Product", productSchema);
 
 
 
-export { ProductModel }
+export { ProductModel };
 
 

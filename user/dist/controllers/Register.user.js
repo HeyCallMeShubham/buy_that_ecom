@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegisterUser = void 0;
 const ErrorHandler_1 = require("../utils/ErrorHandler");
-const User_Model_1 = require("../models/User.Model");
+const User_Model_1 = require("../models/user/User.Model");
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
 const cloudinary_1 = require("../service/cloudinary");
