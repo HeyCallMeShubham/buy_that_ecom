@@ -1,5 +1,5 @@
 
-import mongoose, { Model, Schema, InferSchemaType, model, ObjectId, Document } from "mongoose";
+import mongoose, { Model, Schema, InferSchemaType, model, ObjectId, Document, Mixed } from "mongoose";
 
 
 interface IProduct extends Document {
@@ -13,7 +13,7 @@ interface IProduct extends Document {
     productCategory: string;
     productBrand: string;
     productInStocks: number;
-    productBy: ObjectId;
+    productBy: string | ObjectId | Mixed;
 
 }
 
@@ -34,7 +34,7 @@ const productSchema = new Schema<IProduct>({
     productCategory: { type: String, required: true },
     productBrand: { type: String, required: true },
     productInStocks: { type: Number, required: true },
-    productBy: { type: Schema.Types.ObjectId, required: true } 
+    productBy: { type: Schema.Types.Mixed, required: true } 
 
 });
 

@@ -2,17 +2,30 @@
 import { NextFunction, Request, Response } from "express";
 import { AsyncHandler } from "../utils/AsyncHandler";
 import { ProductModel } from "../models/Product";
-
+import axios from "axios";
 
 const GetProducts = AsyncHandler(async (req: Request, res: Response, next: NextFunction) => {
 
     try {
 
-        const products = await ProductModel.find().populate("productBy");
+        const products = await ProductModel.find()
 
-        console.log(products, 'users');
+        for (let product of products) {
 
-        res.send(products);    
+            await axios.get(`http://localhost:3000/api/v1/user/findOneUser/${product.productBy}`)
+            .then((response: any) => {
+
+                    const userData = JSON.parse(response.data.data);
+
+                    product.productBy = userData
+
+                }).catch((err: any) => {
+
+                    console.log(err);
+
+                });
+
+        }
 
     } catch (err: any) {
 
@@ -23,9 +36,5 @@ const GetProducts = AsyncHandler(async (req: Request, res: Response, next: NextF
 });
 
 
-
-
-
 export { GetProducts }
-
 
