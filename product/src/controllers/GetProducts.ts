@@ -21,7 +21,6 @@ const GetProducts = AsyncHandler(async (req: Request, res: Response, next: NextF
 
                     product.productBy = userData;
 
-            
                 }).catch((err: any) => {
 
                     console.log(err);
@@ -31,6 +30,7 @@ const GetProducts = AsyncHandler(async (req: Request, res: Response, next: NextF
                 });
 
         }
+
 
         res.status(201).json(new ApiResponse(201, products, "list of all products"));
 

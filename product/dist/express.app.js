@@ -10,6 +10,7 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
 const database_1 = require("./config/database");
 const product_routes_1 = require("./routers/product.routes");
+const Error_middleware_1 = require("./middlewares/Error.middleware");
 const expressApp = () => {
     const app = (0, express_1.default)();
     (() => {
@@ -26,6 +27,7 @@ const expressApp = () => {
     app.use("/", product_routes_1.ProductRouter);
     app.use(express_1.default.urlencoded({ extended: true }));
     app.use(body_parser_1.default.urlencoded({ limit: "50mb", extended: true }));
+    app.use(Error_middleware_1.ErrorMiddleware);
     return app;
 };
 exports.expressApp = expressApp;
