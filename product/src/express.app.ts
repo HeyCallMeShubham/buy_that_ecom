@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import { database } from "./config/database";
 import { ProductRouter } from "./routers/product.routes";
+import { ErrorMiddleware } from "./middlewares/Error.middleware";
 
 
 
@@ -35,6 +36,10 @@ const expressApp = (): Express => {
     app.use("/", ProductRouter)
     app.use(express.urlencoded({ extended: true }));
     app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+
+
+
+    app.use(ErrorMiddleware);
 
 
     return app
